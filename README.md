@@ -13,4 +13,29 @@ To appear in [TMM 2022](https://ieeexplore.ieee.org/document/9735294).
 
 ## Codes
 
-Coming soon ...
+ - [ISF-GAN based on StyleGAN v1](./styleganv1/README.md)
+ - [ISF-GAN based on StyleGAN v2](./styleganv2/README.md)
+
+
+## Acknowledgement
+
+This repo is built on several existing projects:
+
+ - [StyleGAN](https://github.com/NVlabs/stylegan)
+ - [InterfaceGAN](https://github.com/genforce/interfacegan)
+ - [StyleFlow](https://github.com/RameenAbdal/StyleFlow)
+ - [PSP](https://github.com/eladrich/pixel2style2pixel)
+ - [SmoothingLatentSpace](https://github.com/yhlleo/SmoothingLatentSpace)
+
+### Citation
+
+```
+@InProceedings{liu2022isfgan,
+    author    = {Liu, Yahui and Chen, Yajing and Bao, Linchao and Sebe, Nicu and Lepri, Bruno and De Nadai, Marco},
+    title     = {ISF-GAN: An Implicit Style Function for High-Resolution Image-to-Image Translation},
+    booktitle = {arXiv preprint arXiv:2109.12492},
+    year      = {2021}
+}
+```
+
+If you have any questions, please contact me without hesitation (yahui.liu AT unitn.it).

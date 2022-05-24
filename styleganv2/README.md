@@ -16,7 +16,7 @@ Download pretrained models from [here](https://drive.google.com/file/d/1EM87Uqua
 
 ## Preparing dataset
 
- - Generate data through stylegan2 (with the released data from StyleFlow):
+ - Generate data through stylegan2 (with the [released data](https://drive.google.com/file/d/1opdzeqpYWtE1uexO49JI-3_RWfE9MYlN/view?usp=sharing) from StyleFlow):
 
 ```
 # stylegan

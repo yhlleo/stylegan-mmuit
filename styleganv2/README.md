@@ -16,7 +16,7 @@ Download pretrained models from [here](https://drive.google.com/file/d/1EM87Uqua
 
 ## Preparing dataset
 
- - Generate data through stylegan2 (with the [released data](https://drive.google.com/file/d/1opdzeqpYWtE1uexO49JI-3_RWfE9MYlN/view?usp=sharing) from StyleFlow):
+ - Generate data through stylegan2 (with the released data from StyleFlow):
 
 ```
 # stylegan
@@ -75,6 +75,22 @@ $ python3 isfgan_edit.py \
   --save_dir /path/to/save_dir
 ```
 
+ - Fast testing:
+
+  The pretrained models can be downloaded [here](https://drive.google.com/file/d/1MgDxjrxaydR1COnnLBr25OwZVj_sZ2nf/view?usp=sharing).
+
+```
+$ python3 isfgan_edit_single.py \
+  --checkpoint_dir /path/to/checkpoint_dir \
+  --use_post 1 \
+  --save_dir /path/to/save_dir
+```
+
+|Input|Gender|Eyeglasses|Age|Expression|
+|:----:|:----:|:----:|:----:|:----:|
+|![](../test/results/000000.png)|![](../test/results/0000-0-0.jpg)|![](../test/results/0000-1-0.jpg)|![](../test/results/0000-2-0.jpg)|![](../test/results/0000-3-0.jpg)|
+||![](../test/results/0000-0-1.jpg)|![](../test/results/0000-1-1.jpg)|![](../test/results/0000-2-1.jpg)|![](../test/results/0000-3-1.jpg)|
+
  - Image interpolation
 
 ```
@@ -92,4 +108,6 @@ $ python3 isfgan_sample.py \
   --use_post 1 \
   --save_dir /path/to/save_dir
 ```
+
+
 

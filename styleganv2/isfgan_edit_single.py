@@ -56,47 +56,19 @@ attribute_dict = {
     3: "Expression"
 }
 
-selected_attrs = ["Gender", "Glasses", "Age", "Expression"]
-
-def preprocess(attr_path, selected_attrs):
-  """Preprocess the CelebA attribute file."""
-  image2attr = []
-  attr2idx = {}
-  lines = [line.rstrip() for line in open(attr_path, 'r')]
-  all_attr_names = lines[1].split()
-  for i, attr_name in enumerate(all_attr_names):
-    attr2idx[attr_name] = i
-
-  lines = lines[2:]
-  for i, line in enumerate(lines):
-    split = line.split()
-    values = split[1:]
-
-    label = []
-    for attr_name in selected_attrs:
-      idx = attr2idx[attr_name]
-      label.append(int(values[idx] == '1'))
-
-    image2attr.append(label)
-  return image2attr
-
 
 def main(args):
   """Main function."""
-  attribute_path = "/path/to/datasets/styleflow/list_attr_ffhq-test.txt"
-  input_latent_codes_path = "/path/to/datasets/styleflow/test/wp.npy"
-
-  all_attributes = preprocess(attribute_path, selected_attrs)
-  all_attributes = np.array(all_attributes)
-  all_attributes = torch.from_numpy(all_attributes).unsqueeze(1).float().cuda() # [N, 1, D]
+  test_dir = "../test"
+  all_attributes = torch.tensor([[1, 1, 0, 0]]).float().cuda()
+  input_latent_code_path = os.path.join(test_dir, "wp.npy")
 
   model = StyleGAN2Generator()
-  model._load_pretrain("/path/to/pretrained_models/stylegan2-ffhq-config-f.pt")
+  model._load_pretrain(os.path.join(test_dir, "stylegan2-ffhq-config-f.pt"))
   model.eval().cuda()
 
-  latent_codes = np.load(input_latent_codes_path)
-  latent_codes = torch.from_numpy(latent_codes).float().cuda()
-  total_num = latent_codes.shape[0]
+  latent_code = np.load(input_latent_code_path)
+  latent_code = torch.from_numpy(latent_code).float().cuda()
 
   save_dir = args.save_dir #"ours-results"
   if not os.path.exists(save_dir):
@@ -114,15 +86,9 @@ def main(args):
   mapping_net.eval().cuda()
 
   attributes = [0,1,2,3]
+  i = 0
   for idx, idy in zip(attributes, [0,1,2,3]):
-    if args.group_index > -1:
-      start_idx = args.group_index*args.group_size
-      end_idx = (args.group_index+1)*args.group_size
-    else:
-      start_idx = 0
-      end_idx = 1000
-    for i in tqdm(range(start_idx, end_idx)):
-      lat, lab_src = latent_codes[i,:],  all_attributes[i]
+      lat, lab_src = latent_code,  all_attributes
       lab_trg_pos = copy.deepcopy(lab_src)
       lab_trg_neg = copy.deepcopy(lab_src)
 

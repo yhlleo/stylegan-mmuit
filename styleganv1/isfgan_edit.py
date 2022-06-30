@@ -111,8 +111,7 @@ def main(args):
     latent_dim=args.latent_dim,
     latent_type=args.latent_type,
     norm_type=args.norm_type,
-    pre_norm=args.pre_norm,
-    use_vae=args.use_vae
+    pre_norm=args.pre_norm
   )
   ckpt = torch.load(os.path.join(args.checkpoint_dir, "{:06d}_nets_ema.ckpt".format(args.resume_iter)), map_location='cpu')
   cur_state = mapping_net.state_dict()
@@ -139,20 +138,14 @@ def main(args):
       lab_trg_pos[:,idx] = 1.0
       lab_trg_neg[:,idx] = 0.0
 
-      if args.use_vae:
-        rndz = torch.randn(1, 18 if args.latent_type == "wp" else 1, args.latent_dim).cuda().detach()
-      else:
-        rndz = torch.randn(1, args.rnd_dim).cuda().detach()
+      rndz = torch.randn(1, args.rnd_dim).cuda().detach()
       lat_pos = mapping_net(lat, rndz, lab_trg_pos)
       lat_pos = model.preprocess(lat_pos, latent_space_type=args.latent_type)
       if args.use_post:
         lat_pos = post_process(lat, lat_pos, attribute_dict[idx])
       fake_pos = model.synthesize(lat_pos, latent_space_type=args.latent_type)['image']
 
-      if args.use_vae:
-        rndz = torch.randn(1, 18 if args.latent_type == "wp" else 1, args.latent_dim).cuda().detach()
-      else:
-        rndz = torch.randn(1, args.rnd_dim).cuda().detach()
+      rndz = torch.randn(1, args.rnd_dim).cuda().detach()
       lat_neg = mapping_net(lat, rndz, lab_trg_neg)
       lat_neg = model.preprocess(lat_neg, latent_space_type=args.latent_type)
       if args.use_post:

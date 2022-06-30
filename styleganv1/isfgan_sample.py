@@ -103,18 +103,11 @@ def main(args):
       lab_trg_neg[:,idx] = 0.0
 
       for idy in range(args.num_sample):
-
-        if args.use_vae:
-          rndz = torch.randn(1, 18 if args.latent_type == "wp" else 1, args.latent_dim).cuda().detach()
-        else:
-          rndz = torch.randn(1, args.rnd_dim).cuda().detach()
+        rndz = torch.randn(1, args.rnd_dim).cuda().detach()
         lat_pos = mapping_net(lat, rndz, lab_trg_pos)
         lat_pos = model.preprocess(lat_pos, latent_space_type=args.latent_type)
 
-        if args.use_vae:
-          rndz = torch.randn(1, 18 if args.latent_type == "wp" else 1, args.latent_dim).cuda().detach()
-        else:
-          rndz = torch.randn(1, args.rnd_dim).cuda().detach()
+        rndz = torch.randn(1, args.rnd_dim).cuda().detach()
         lat_neg = mapping_net(lat, rndz, lab_trg_neg)
         lat_neg = model.preprocess(lat_neg, latent_space_type=args.latent_type)
       

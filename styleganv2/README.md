@@ -88,8 +88,8 @@ $ python3 isfgan_edit_single.py \
 
 |Input|Gender|Eyeglasses|Age|Expression|
 |:----:|:----:|:----:|:----:|:----:|
-|![](../test/results/000000.png)|![](../test/results/0000-0-0.jpg)|![](../test/results/0000-1-0.jpg)|![](../test/results/0000-2-0.jpg)|![](../test/results/0000-3-0.jpg)|
-||![](../test/results/0000-0-1.jpg)|![](../test/results/0000-1-1.jpg)|![](../test/results/0000-2-1.jpg)|![](../test/results/0000-3-1.jpg)|
+|![](./test/results/000000.png)|![](./test/results/0000-0-0.jpg)|![](./test/results/0000-1-0.jpg)|![](./test/results/0000-2-0.jpg)|![](./test/results/0000-3-0.jpg)|
+||![](./test/results/0000-0-1.jpg)|![](./test/results/0000-1-1.jpg)|![](./test/results/0000-2-1.jpg)|![](./test/results/0000-3-1.jpg)|
 
  - Image interpolation
 

@@ -59,7 +59,7 @@ attribute_dict = {
 
 def main(args):
   """Main function."""
-  test_dir = "../test"
+  test_dir = "./test"
   all_attributes = torch.tensor([[1, 1, 0, 0]]).float().cuda()
   input_latent_code_path = os.path.join(test_dir, "wp.npy")
 

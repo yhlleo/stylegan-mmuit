@@ -5,7 +5,7 @@
 
 ![](./figures/teaser.jpg)
 
-To appear in [TMM 2022](https://ieeexplore.ieee.org/document/9735294).
+Appeared in [TMM 2022](https://ieeexplore.ieee.org/document/9735294).
 
 [[paper]](https://ieeexplore.ieee.org/document/9735294)[[arXiv]](https://arxiv.org/pdf/2109.12492.pdf)[[code]](https://github.com/yhlleo/stylegan-mmuit) <br>
 [Yahui Liu](https://yhlleo.github.io/)<sup>1,3</sup>, Yajing Chen<sup>2</sup>, [Linchao Bao](http://linchaobao.github.io/)<sup>2</sup>, [Nicu Sebe](https://scholar.google.com/citations?user=stFCYOAAAAAJ&hl=en)<sup>1</sup>, [Bruno Lepri](https://scholar.google.com/citations?hl=en&user=JfcopG0AAAAJ)<sup>3</sup>, [Marco De Nadai](https://scholar.google.com/citations?user=_4-U61wAAAAJ&hl=en)<sup>3</sup> <br>
